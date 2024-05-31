@@ -53,7 +53,8 @@ class MatchViewModel @Inject constructor(
         val filteredMatches = data?.data?.filter { it.sc.st == 5 }
         val sortedMatches = filteredMatches?.sortedBy { it.d }
         //find matches in the same league
-        val groupedMatches = sortedMatches?.groupBy { it.to.n }
+       // val groupedMatches = sortedMatches?.groupBy { it.to.n }
+        val groupedMatches = sortedMatches?.groupBy { it.to.n to it.to.flag }
 
         _state.value = MatchListViewState.Success(groupedMatches)
     }
@@ -63,7 +64,7 @@ class MatchViewModel @Inject constructor(
 
 sealed class MatchListViewState {
     object Init : MatchListViewState()
-    data class Success(val data: Map<String, List<Data>>?) : MatchListViewState()
+    data class Success(val data: Map<Pair<String, String>, List<Data>>?) : MatchListViewState()
     data class IsLoading(val isLoading: Boolean) : MatchListViewState()
     data class Error(val error: Any) : MatchListViewState()
 }

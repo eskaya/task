@@ -55,14 +55,17 @@ class MatchListFragment : Fragment() {
         }
     }
 
-    private fun handleSuccess(data: Map<String, List<Data>>) {
+    private fun handleSuccess(data: Map<Pair<String, String>, List<Data>>) {
 
-        for ((ligAdi, macListesi) in data) {
+        for ((ligBilgisi, macListesi) in data) {
+            val (ligAdi, bayrak) = ligBilgisi
             println("Lig Adı: $ligAdi")
+            println("Bayrak: $bayrak")
             println("Maçlar:")
             for (mac in macListesi) {
                 println("- ${mac.ht.n} vs ${mac.at.n}")
             }
+            println("----------")
         }
 
     }
