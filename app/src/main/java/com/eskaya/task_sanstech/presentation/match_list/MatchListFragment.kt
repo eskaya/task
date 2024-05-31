@@ -48,15 +48,23 @@ class MatchListFragment : Fragment() {
                 is MatchListViewState.IsLoading -> handleLoading(it.isLoading)
                 is MatchListViewState.Success -> it.data?.let {
                     handleSuccess(
-                        it.data
+                        it
                     )
                 }
             }
         }
     }
 
-    private fun handleSuccess(data: List<Data>) {
-        println("alınan data$data")
+    private fun handleSuccess(data: Map<String, List<Data>>) {
+
+        for ((ligAdi, macListesi) in data) {
+            println("Lig Adı: $ligAdi")
+            println("Maçlar:")
+            for (mac in macListesi) {
+                println("- ${mac.ht.n} vs ${mac.at.n}")
+            }
+        }
+
     }
 
     private fun handleLoading(loading: Boolean) {

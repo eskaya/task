@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.eskaya.task_sanstech.data.remote.models.response.Data
 import com.eskaya.task_sanstech.data.remote.models.response.MatchListDto
 import com.eskaya.task_sanstech.domain.use_case.GetMatchListUseCase
 import com.eskaya.task_sanstech.utils.Resource
@@ -25,29 +26,44 @@ class MatchViewModel @Inject constructor(
         _state.value = MatchListViewState.IsLoading(isLoading)
     }
 
-     fun getMatchList() {
+    fun getMatchList() {
         getMatchListUseCase.invoke().onEach {
             when (it) {
                 is Resource.Error -> {
                     setLoadingState(false)
                     _state.value = MatchListViewState.Error(it.message as Any)
                 }
+
                 is Resource.Loading -> {
                     setLoadingState(true)
                 }
+
                 is Resource.Success -> {
                     setLoadingState(false)
-                    _state.value = MatchListViewState.Success(it.data)
+                    filterData(it.data)
                 }
             }
 
         }.launchIn(viewModelScope)
     }
+
+    private fun filterData(data: MatchListDto?) {
+
+        //desired filtering operation in case
+        val filteredMatches = data?.data?.filter { it.sc.st == 5 }
+        val sortedMatches = filteredMatches?.sortedBy { it.d }
+        //find matches in the same league
+        val groupedMatches = sortedMatches?.groupBy { it.to.n }
+
+        _state.value = MatchListViewState.Success(groupedMatches)
+    }
+
+
 }
 
 sealed class MatchListViewState {
     object Init : MatchListViewState()
-    data class Success(val data: MatchListDto?) : MatchListViewState()
+    data class Success(val data: Map<String, List<Data>>?) : MatchListViewState()
     data class IsLoading(val isLoading: Boolean) : MatchListViewState()
     data class Error(val error: Any) : MatchListViewState()
 }

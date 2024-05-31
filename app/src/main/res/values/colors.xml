@@ -8,7 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="charade">#262A34</color>
-    <color name="primary_color_text">#5e6064</color>
+    <color name="primary_color_text">#27323C</color>
 
 </resources>
