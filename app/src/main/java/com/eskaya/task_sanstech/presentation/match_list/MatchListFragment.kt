@@ -1,18 +1,23 @@
 package com.eskaya.task_sanstech.presentation.match_list
 
+import android.content.Intent
+import android.graphics.ColorSpace.match
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eskaya.mvvm_application.databinding.FragmentMatchListBinding
 import com.eskaya.task_sanstech.data.AppPreferences
 import com.eskaya.task_sanstech.data.remote.models.League
+import com.eskaya.task_sanstech.domain.model.Match
+import com.eskaya.task_sanstech.presentation.match_detail.MatchDetailActivity
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MatchListFragment : Fragment(), MatchAdapterListener {
@@ -74,8 +79,10 @@ class MatchListFragment : Fragment(), MatchAdapterListener {
         Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
     }
 
-    override fun onClickedItem(homeName: String) {
-        Toast.makeText(context, homeName, Toast.LENGTH_SHORT).show()
+    override fun onClickedItem(match: Match) {
+        val intent = Intent(activity, MatchDetailActivity::class.java)
+        intent.putExtra("match", match) // Match objesini ekleme
+        startActivity(intent)
     }
 
     override fun onStarClick(matchId: Int) {

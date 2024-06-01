@@ -64,7 +64,8 @@ class MatchListHistoryViewHolder(
     }
 
     override fun onClick(v: View?) {
-        item.homeTeam?.let { listener.onClickedItem(it.n) } //i --> ma.ın benzersiz kimliği
+      //  item.homeTeam?.let { listener.onClickedItem(it.n) } //i --> ma.ın benzersiz kimliği
+        listener.onClickedItem(item)
     }
 
     private fun setFavoriteIcon() {
@@ -84,6 +85,6 @@ class MatchListHistoryViewHolder(
 }
 
 interface MatchAdapterListener {
-    fun onClickedItem(homeName: String)
+    fun onClickedItem(matchData: Match)
     fun onStarClick(match: Int)
 }
