@@ -1,7 +1,6 @@
 package com.eskaya.task_sanstech.presentation.match_list
 
 import android.content.Intent
-import android.graphics.ColorSpace.match
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -81,7 +80,7 @@ class MatchListFragment : Fragment(), MatchAdapterListener {
 
     override fun onClickedItem(match: Match) {
         val intent = Intent(activity, MatchDetailActivity::class.java)
-        intent.putExtra("match", match) // Match objesini ekleme
+        intent.putExtra("match", match)
         startActivity(intent)
     }
 

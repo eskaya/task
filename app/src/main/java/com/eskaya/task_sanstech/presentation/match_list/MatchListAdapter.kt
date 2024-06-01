@@ -45,7 +45,6 @@ class MatchListHistoryViewHolder(
         binding.root.setOnClickListener(this)
         binding.ivStar.setOnClickListener {
             item.id?.let { it1 -> listener.onStarClick(it1) }
-            //listener.onStarClick(1)
         }
 
     }
@@ -53,22 +52,19 @@ class MatchListHistoryViewHolder(
     fun bind(item: Match) {
         this.item = item
        binding.tvScore.text = item.scorInfos?.abbr
-        //ht --> ev sahibi, n --> adı
-        binding.tvHomeTeam.text = item.homeTeam?.n
 
-        //at --> deplasman, n --> adı
+        binding.tvHomeTeam.text = item.homeTeam?.n
         binding.tvAwayTeam.text = item.awayTeam?.n
         binding.tvScoreCount.text =
             item.scorInfos?.ht?.r.toString() + " " + "-" + " " + item.scorInfos?.at?.r.toString()
-        setFavoriteIcon()
+        updateFavoriteIcon()
     }
 
     override fun onClick(v: View?) {
-      //  item.homeTeam?.let { listener.onClickedItem(it.n) } //i --> ma.ın benzersiz kimliği
         listener.onClickedItem(item)
     }
 
-    private fun setFavoriteIcon() {
+    private fun updateFavoriteIcon() {
         if (item.id?.let { AppPreferences.getInstance(context).isFavorite(it) } == true) {
             Glide.with(context)
                 .load(R.drawable.ic_star)

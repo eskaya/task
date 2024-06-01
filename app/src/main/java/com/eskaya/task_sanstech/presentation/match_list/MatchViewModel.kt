@@ -50,8 +50,11 @@ class MatchViewModel @Inject constructor(
 
     private fun filterData(data: List<Match>) {
 
+        //Filtering only finished matches
         val filteredMatches = data.filter { it.scorInfos?.st  == 5 }
+        //It is expected to be sorted by date
         val sortedMatches = filteredMatches.sortedBy { it.matchDate }
+        //Grouping by leagues
         val groupedMatches = sortedMatches.groupBy { (it.to?.n ) to it.to?.flag }
 
         val leagues = groupedMatches.map { entry ->
@@ -67,34 +70,6 @@ class MatchViewModel @Inject constructor(
         }
         _state.value = leagues.let { MatchListViewState.Success(it as List<League>) }
     }
-
-
-
-    /*
-    private fun filterData(data: List<Movie>?) {
-
-        //desired filtering operation in case
-        val filteredMatches = data?.filter { it.scorInfos?.st == 5 }
-        val sortedMatches = filteredMatches?.sortedBy { it.matchDate }
-        //find matches in the same league
-        // val groupedMatches = sortedMatches?.groupBy { it.to.n }
-        val groupedMatches = sortedMatches?.groupBy { it.to?.n to it.to?.flag }
-
-        val leagues = groupedMatches?.map { entry ->
-            entry.key.first?.let {
-                entry.key.second?.let { it1 ->
-                    League(
-                        leagueName = it,
-                        flag = it1,
-                        matches = entry.value
-                    )
-                }
-            }
-        }
-        _state.value = MatchListViewState.Success(leagues)
-    }
-
-     */
 }
 
 sealed class MatchListViewState {

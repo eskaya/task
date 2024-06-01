@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">task-sanstech</string>
+    <string name="detailPage_errorMsg">Detay sayfası yğklenirken bir sorun oluştu..</string>
 
 </resources>

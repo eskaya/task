@@ -12,7 +12,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class Match(
-
     val awayTeam: At?, //at
     val br: Br?, //br
     val bri: Int?,

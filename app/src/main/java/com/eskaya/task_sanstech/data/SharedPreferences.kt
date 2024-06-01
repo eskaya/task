@@ -31,7 +31,6 @@ class AppPreferences private constructor(context: Context) {
         return mutableSetOf()
     }
 
-
     fun addFavorite(matchId: Int) {
         val favorites = getFavorites()
         favorites.add(matchId)

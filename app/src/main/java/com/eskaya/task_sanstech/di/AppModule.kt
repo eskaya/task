@@ -53,15 +53,4 @@ object AppModule {
         return MatchRepositoryImpl(api,mapper)
     }
 
-
-
-    /*
-    @Provides
-    @Singleton
-    fun provideMatchRepository(api: MatchApi): MatchRepository {
-        return MatchRepositoryImpl(api)
-    }
-
-     */
-
 }

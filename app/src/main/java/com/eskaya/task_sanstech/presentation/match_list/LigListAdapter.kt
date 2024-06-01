@@ -53,6 +53,7 @@ class LigListHistoryViewHolder(
             .into(binding.ivFlag)
 
         binding.tvLigName.text = item.leagueName
+        //create child adapter
         binding.recyclerViewForMatchList.layoutManager = LinearLayoutManager(itemView.context)
         val matchAdapter = MatchListAdapter(item.matches, matchListener)
         binding.recyclerViewForMatchList.layoutManager = LinearLayoutManager(binding.root.context)
@@ -60,7 +61,6 @@ class LigListHistoryViewHolder(
     }
 
     override fun onClick(p0: View?) {
-        TODO("Not yet implemented")
     }
 }
 

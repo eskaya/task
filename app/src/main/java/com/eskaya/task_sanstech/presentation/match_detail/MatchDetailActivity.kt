@@ -3,6 +3,7 @@ package com.eskaya.task_sanstech.presentation.match_detail
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.eskaya.mvvm_application.R
 import com.eskaya.mvvm_application.databinding.ActivityMatchDetailBinding
 import com.eskaya.task_sanstech.domain.model.Match
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,8 +39,7 @@ class MatchDetailActivity : AppCompatActivity() {
             binding.tvAwayTeamGoalValue.text = match?.scorInfos?.at?.c.toString()
         } else {
             Toast.makeText(
-                this,
-                "Detay sayfası yğklenirken bir sorun oluştu.. ",
+                this, getString(R.string.detailPage_errorMsg),
                 Toast.LENGTH_SHORT
             ).show()
             finish()

@@ -14,13 +14,4 @@ class MatchRepositoryImpl @Inject constructor(
             mapper.fromDtoToDomain(it)
         }
     }
-
-    /*
-    override suspend fun getMovies(type: String): List<Movie> {
-        return api.getMovieList(type).results.map {
-            mapper.fromDtoToDomain(it)
-        }
-    }
-
-     */
 }
