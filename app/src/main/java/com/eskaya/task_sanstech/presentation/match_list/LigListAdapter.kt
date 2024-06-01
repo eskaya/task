@@ -3,6 +3,7 @@ package com.eskaya.task_sanstech.presentation.match_list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -11,8 +12,6 @@ import com.eskaya.task_sanstech.data.remote.models.League
 
 
 class LigListAdapter(
-   // val data: ArrayList<MovieItem>,
-   // val data : Map<Pair<String, String>, List<Data>>,
     private val data: List<League>,
     private val listener: LigAdapterListener
 ) : RecyclerView.Adapter<LigListHistoryViewHolder>() {
@@ -59,8 +58,8 @@ class LigListHistoryViewHolder(
         binding.recyclerViewForMatchList.adapter = MatchListAdapter(
             item.matches,
             object : MatchAdapterListener {
-                override fun onClickedItem(id: Int) {
-                    println("tıklama$id")
+                override fun onClickedItem(homeName: String) {
+                   Toast.makeText(context,homeName,Toast.LENGTH_SHORT).show()
                 }
             })
     }

@@ -9,5 +9,6 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="primary_color">#27323C</color>
+    <color name="iron">#d8d9dc</color>
 
 </resources>

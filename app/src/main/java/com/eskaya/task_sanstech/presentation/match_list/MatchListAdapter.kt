@@ -58,10 +58,10 @@ class MatchListHistoryViewHolder(
     }
 
     override fun onClick(v: View?) {
-        listener.onClickedItem(item.i) //i --> ma.ın benzersiz kimliği
+        listener.onClickedItem(item.ht.n) //i --> ma.ın benzersiz kimliği
     }
 }
 
 interface MatchAdapterListener {
-    fun onClickedItem(id: Int)
+    fun onClickedItem(homeName: String)
 }

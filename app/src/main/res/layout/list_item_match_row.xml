@@ -8,12 +8,10 @@
        android:id="@+id/cvScore"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="24dp"
-       android:layout_marginBottom="24dp"
+       android:layout_marginTop="10dp"
        app:cardBackgroundColor="@color/primary_color"
-       app:cardCornerRadius="5dp"
+       app:cardCornerRadius="4dp"
        app:cardElevation="0dp"
-       app:layout_constraintBottom_toBottomOf="parent"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
        app:layout_constraintTop_toTopOf="parent">
@@ -22,12 +20,12 @@
           android:id="@+id/tvScoreCount"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:fontFamily="@font/lato_bold"
+          android:fontFamily="@font/lato_extra_bold"
           android:paddingHorizontal="8dp"
           android:paddingVertical="2dp"
           android:text="1 - 3"
           android:textColor="@color/white"
-          android:textSize="@dimen/text_16" />
+          android:textSize="@dimen/text_14" />
 
    </com.google.android.material.card.MaterialCardView>
 
@@ -49,8 +47,10 @@
        android:layout_width="0dp"
        android:layout_height="wrap_content"
        android:layout_marginStart="8dp"
-       android:layout_marginEnd="12dp"
+       android:layout_marginEnd="6dp"
+       android:ellipsize="end"
        android:fontFamily="@font/lato_regular"
+       android:maxLines="1"
        android:text="CD Cobreloa Cala"
        android:textAlignment="textEnd"
        android:textColor="@color/primary_color"
@@ -64,9 +64,11 @@
        android:id="@+id/tvAwayTeam"
        android:layout_width="0dp"
        android:layout_height="wrap_content"
-       android:layout_marginStart="12dp"
+       android:layout_marginStart="6dp"
        android:layout_marginEnd="8dp"
+       android:ellipsize="end"
        android:fontFamily="@font/lato_regular"
+       android:maxLines="1"
        android:text="Manchester United"
        android:textAlignment="textStart"
        android:textColor="@color/primary_color"
@@ -85,5 +87,15 @@
        app:layout_constraintBottom_toBottomOf="@+id/cvScore"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintTop_toTopOf="@+id/cvScore" />
+
+   <View
+       android:layout_width="0dp"
+       android:layout_height="1dp"
+       android:layout_marginTop="10dp"
+       android:background="@color/iron"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/cvScore" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
