@@ -3,6 +3,7 @@ package com.eskaya.task_sanstech.presentation.match_list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.eskaya.mvvm_application.databinding.ListItemLigBinding
@@ -54,8 +55,16 @@ class LigListHistoryViewHolder(
             .into(binding.ivFlag)
 
         binding.tvLigName.text = item.leagueName
-        
+        binding.recyclerViewForMatchList.layoutManager = LinearLayoutManager(itemView.context)
+        binding.recyclerViewForMatchList.adapter = MatchListAdapter(
+            item.matches,
+            object : MatchAdapterListener {
+                override fun onClickedItem(id: Int) {
+                    println("tıklama$id")
+                }
+            })
     }
+
 
     override fun onClick(v: View?) {
        // listener.onClickedItem(item.id)
