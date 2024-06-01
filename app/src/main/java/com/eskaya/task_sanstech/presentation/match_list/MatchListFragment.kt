@@ -54,17 +54,15 @@ class MatchListFragment : Fragment(), MatchAdapterListener {
                 MatchListViewState.Init -> Unit
                 is MatchListViewState.Error -> handleError(it.error)
                 is MatchListViewState.IsLoading -> handleLoading(it.isLoading)
-                is MatchListViewState.Success -> it.data?.let {
-                    handleSuccess(
-                        it
-                    )
-                }
+                is MatchListViewState.Success -> handleSuccess(
+                    it.data
+                )
             }
         }
     }
 
-    private fun handleSuccess(data: List<League>?) {
-        ligListAdapter = data?.let { LigListAdapter(it, this) }!!
+    private fun handleSuccess(data: List<League>) {
+        ligListAdapter = LigListAdapter(data, this)!!
         binding.recyclerViewForLigList.adapter = ligListAdapter
         binding.recyclerViewForLigList.adapter = ligListAdapter
     }

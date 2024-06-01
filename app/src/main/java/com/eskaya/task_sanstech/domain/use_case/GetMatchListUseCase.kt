@@ -1,6 +1,7 @@
 package com.eskaya.task_sanstech.domain.use_case
 
-import com.eskaya.task_sanstech.data.remote.models.response.MatchListDto
+
+import com.eskaya.task_sanstech.domain.model.Match
 import com.eskaya.task_sanstech.domain.repository.MatchRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -13,7 +14,7 @@ import com.eskaya.task_sanstech.utils.extensions.handleError
 class GetMatchListUseCase @Inject constructor(
     private val repository: MatchRepository
 ) {
-    operator fun invoke(): Flow<Resource<MatchListDto>> = flow {
+    operator fun invoke(): Flow<Resource<List<Match>>> = flow {
         try {
             emit(Resource.Loading())
             val matches = repository.getMatchList()

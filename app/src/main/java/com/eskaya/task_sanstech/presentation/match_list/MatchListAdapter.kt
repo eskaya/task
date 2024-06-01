@@ -8,11 +8,11 @@ import com.bumptech.glide.Glide
 import com.eskaya.mvvm_application.R
 import com.eskaya.mvvm_application.databinding.ListItemMatchRowBinding
 import com.eskaya.task_sanstech.data.AppPreferences
-import com.eskaya.task_sanstech.data.remote.models.response.Data
+import com.eskaya.task_sanstech.domain.model.Match
 
 
 class MatchListAdapter(
-    val data: List<Data>,
+    val data: List<Match>,
     private val listener: MatchAdapterListener
 ) : RecyclerView.Adapter<MatchListHistoryViewHolder>() {
 
@@ -35,39 +35,40 @@ class MatchListAdapter(
 class MatchListHistoryViewHolder(
     private val binding: ListItemMatchRowBinding,
     private val listener: MatchAdapterListener,
-    val data: List<Data>,
+    val data: List<Match>,
 ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-    private lateinit var item: Data
+    private lateinit var item: Match
     private val context = binding.root.context
 
     init {
         binding.root.setOnClickListener(this)
         binding.ivStar.setOnClickListener {
-            listener.onStarClick(item.i)
+            item.id?.let { it1 -> listener.onStarClick(it1) }
+            //listener.onStarClick(1)
         }
 
     }
 
-    fun bind(item: Data) {
+    fun bind(item: Match) {
         this.item = item
-        binding.tvScore.text = item.sc.abbr
+       binding.tvScore.text = item.scorInfos?.abbr
         //ht --> ev sahibi, n --> adı
-        binding.tvHomeTeam.text = item.ht.n
+        binding.tvHomeTeam.text = item.homeTeam?.n
 
         //at --> deplasman, n --> adı
-        binding.tvAwayTeam.text = item.at.n
+        binding.tvAwayTeam.text = item.awayTeam?.n
         binding.tvScoreCount.text =
-            item.sc.ht.r.toString() + " " + "-" + " " + item.sc.at.r.toString()
+            item.scorInfos?.ht?.r.toString() + " " + "-" + " " + item.scorInfos?.at?.r.toString()
         setFavoriteIcon()
     }
 
     override fun onClick(v: View?) {
-        listener.onClickedItem(item.ht.n) //i --> ma.ın benzersiz kimliği
+        item.homeTeam?.let { listener.onClickedItem(it.n) } //i --> ma.ın benzersiz kimliği
     }
 
     private fun setFavoriteIcon() {
-        if (AppPreferences.getInstance(context).isFavorite(item.i)) {
+        if (item.id?.let { AppPreferences.getInstance(context).isFavorite(it) } == true) {
             Glide.with(context)
                 .load(R.drawable.ic_star)
                 .centerCrop()

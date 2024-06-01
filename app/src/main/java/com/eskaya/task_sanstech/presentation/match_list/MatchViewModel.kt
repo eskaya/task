@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.eskaya.task_sanstech.data.remote.models.League
-import com.eskaya.task_sanstech.data.remote.models.response.MatchListDto
+import com.eskaya.task_sanstech.domain.model.Match
 import com.eskaya.task_sanstech.domain.use_case.GetMatchListUseCase
 import com.eskaya.task_sanstech.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,38 +40,66 @@ class MatchViewModel @Inject constructor(
 
                 is Resource.Success -> {
                     setLoadingState(false)
-                    filterData(it.data)
+                    it.data?.let { it1 -> filterData(it1) }
                 }
             }
 
         }.launchIn(viewModelScope)
     }
 
-    private fun filterData(data: MatchListDto?) {
+
+    private fun filterData(data: List<Match>) {
+
+        val filteredMatches = data.filter { it.scorInfos?.st  == 5 }
+        val sortedMatches = filteredMatches.sortedBy { it.matchDate }
+        val groupedMatches = sortedMatches.groupBy { (it.to?.n ) to it.to?.flag }
+
+        val leagues = groupedMatches.map { entry ->
+            entry.key.first?.let {
+                entry.key.second?.let { it1 ->
+                    League(
+                        leagueName = it,
+                        flag = it1,
+                        matches = entry.value
+                    )
+                }
+            }
+        }
+        _state.value = leagues.let { MatchListViewState.Success(it as List<League>) }
+    }
+
+
+
+    /*
+    private fun filterData(data: List<Movie>?) {
 
         //desired filtering operation in case
-        val filteredMatches = data?.data?.filter { it.sc.st == 5 }
-        val sortedMatches = filteredMatches?.sortedBy { it.d }
+        val filteredMatches = data?.filter { it.scorInfos?.st == 5 }
+        val sortedMatches = filteredMatches?.sortedBy { it.matchDate }
         //find matches in the same league
-       // val groupedMatches = sortedMatches?.groupBy { it.to.n }
-        val groupedMatches = sortedMatches?.groupBy { it.to.n to it.to.flag }
+        // val groupedMatches = sortedMatches?.groupBy { it.to.n }
+        val groupedMatches = sortedMatches?.groupBy { it.to?.n to it.to?.flag }
 
         val leagues = groupedMatches?.map { entry ->
-            League(
-                leagueName = entry.key.first,
-                flag = entry.key.second,
-                matches = entry.value
-            )
+            entry.key.first?.let {
+                entry.key.second?.let { it1 ->
+                    League(
+                        leagueName = it,
+                        flag = it1,
+                        matches = entry.value
+                    )
+                }
+            }
         }
         _state.value = MatchListViewState.Success(leagues)
     }
 
-
+     */
 }
 
 sealed class MatchListViewState {
     object Init : MatchListViewState()
-    data class Success(val data: List<League>?) : MatchListViewState()
+    data class Success(val data: List<League>) : MatchListViewState()
     data class IsLoading(val isLoading: Boolean) : MatchListViewState()
     data class Error(val error: Any) : MatchListViewState()
 }

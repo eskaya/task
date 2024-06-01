@@ -3,6 +3,7 @@ package com.eskaya.task_sanstech.di
 import MatchRepositoryImpl
 import com.eskaya.mvvm_application.BuildConfig
 import com.eskaya.task_sanstech.data.remote.services.MatchApi
+import com.eskaya.task_sanstech.domain.model.MatchMapper
 import com.eskaya.task_sanstech.domain.repository.MatchRepository
 import dagger.Module
 import dagger.Provides
@@ -42,9 +43,25 @@ object AppModule {
     }
 
     @Provides
+    fun provideMovieMapper(): MatchMapper {
+        return MatchMapper()
+    }
+
+    @Provides
+    fun provideMovieRepository(api: MatchApi,mapper: MatchMapper): MatchRepository {
+        // Assuming there's a constructor or some way to create a MovieRepository with MovieMapper
+        return MatchRepositoryImpl(api,mapper)
+    }
+
+
+
+    /*
+    @Provides
     @Singleton
     fun provideMatchRepository(api: MatchApi): MatchRepository {
         return MatchRepositoryImpl(api)
     }
+
+     */
 
 }

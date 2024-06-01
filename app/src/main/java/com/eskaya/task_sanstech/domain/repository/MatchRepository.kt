@@ -1,9 +1,9 @@
 package com.eskaya.task_sanstech.domain.repository
 
-import com.eskaya.task_sanstech.data.remote.models.response.*
+import com.eskaya.task_sanstech.domain.model.Match
 
 interface MatchRepository {
 
-    suspend fun getMatchList(): MatchListDto
+    suspend fun getMatchList():List<Match>
 
 }
