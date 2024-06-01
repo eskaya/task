@@ -12,11 +12,4 @@ MVVM and Clean Architecture architecture were used in this project, which was cr
 - Glide
 - View Binding
 
-
-
-
-
-
-
-
-# task
+note --> I had designed the project as a single activity, but I saw that the Detail page was requested as an Activity in the task. For this reason, I designed the Detail page as an Activity instead of a Fragment.
