@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.eskaya.task_sanstech.data.remote.models.response.Data
+import com.eskaya.task_sanstech.data.remote.models.League
 import com.eskaya.task_sanstech.data.remote.models.response.MatchListDto
 import com.eskaya.task_sanstech.domain.use_case.GetMatchListUseCase
 import com.eskaya.task_sanstech.utils.Resource
@@ -56,7 +56,14 @@ class MatchViewModel @Inject constructor(
        // val groupedMatches = sortedMatches?.groupBy { it.to.n }
         val groupedMatches = sortedMatches?.groupBy { it.to.n to it.to.flag }
 
-        _state.value = MatchListViewState.Success(groupedMatches)
+        val leagues = groupedMatches?.map { entry ->
+            League(
+                leagueName = entry.key.first,
+                flag = entry.key.second,
+                matches = entry.value
+            )
+        }
+        _state.value = MatchListViewState.Success(leagues)
     }
 
 
@@ -64,7 +71,7 @@ class MatchViewModel @Inject constructor(
 
 sealed class MatchListViewState {
     object Init : MatchListViewState()
-    data class Success(val data: Map<Pair<String, String>, List<Data>>?) : MatchListViewState()
+    data class Success(val data: List<League>?) : MatchListViewState()
     data class IsLoading(val isLoading: Boolean) : MatchListViewState()
     data class Error(val error: Any) : MatchListViewState()
 }

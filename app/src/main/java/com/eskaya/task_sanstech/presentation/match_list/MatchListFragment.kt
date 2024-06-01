@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.eskaya.mvvm_application.databinding.FragmentMatchListBinding
+import com.eskaya.task_sanstech.data.remote.models.League
 import com.eskaya.task_sanstech.data.remote.models.response.Data
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,6 +19,8 @@ class MatchListFragment : Fragment() {
 
     private lateinit var binding: FragmentMatchListBinding
     private val viewModel: MatchViewModel by viewModels()
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private lateinit var ligListAdapter: LigListAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +39,8 @@ class MatchListFragment : Fragment() {
     }
 
     private fun init() {
+        layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        binding.recyclerViewForLigList.layoutManager = layoutManager
     }
 
     private fun listener() {}
@@ -55,8 +62,9 @@ class MatchListFragment : Fragment() {
         }
     }
 
-    private fun handleSuccess(data: Map<Pair<String, String>, List<Data>>) {
+    private fun handleSuccess(data: List<League>?) {
 
+        /*
         for ((ligBilgisi, macListesi) in data) {
             val (ligAdi, bayrak) = ligBilgisi
             println("Lig Adı: $ligAdi")
@@ -68,6 +76,16 @@ class MatchListFragment : Fragment() {
             println("----------")
         }
 
+         */
+
+        ligListAdapter = LigListAdapter(
+            data as ArrayList<League>,
+            object : LigAdapterListener {
+                override fun onClickedItem(ligName: String) {
+                    println("tıklama$ligName")
+                }
+            })
+        binding.recyclerViewForLigList.adapter = ligListAdapter
     }
 
     private fun handleLoading(loading: Boolean) {
