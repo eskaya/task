@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.eskaya.mvvm_application.databinding.FragmentMatchListBinding
+import com.eskaya.task_sanstech.data.AppPreferences
 import com.eskaya.task_sanstech.data.remote.models.League
-import com.eskaya.task_sanstech.data.remote.models.response.Data
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +43,8 @@ class MatchListFragment : Fragment(), MatchAdapterListener {
         binding.recyclerViewForLigList.layoutManager = layoutManager
     }
 
-    private fun listener() {}
+    private fun listener() {
+    }
 
     private fun setUpObservers() {
         viewModel.getViewState.observe(
@@ -76,11 +77,16 @@ class MatchListFragment : Fragment(), MatchAdapterListener {
     }
 
     override fun onClickedItem(homeName: String) {
-        Toast.makeText(context,homeName,Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, homeName, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onStarClick(match: Data) {
-        Toast.makeText(context,"Yıldıza tıklandı",Toast.LENGTH_SHORT).show()
+    override fun onStarClick(matchId: Int) {
+        if (AppPreferences.getInstance(requireContext()).isFavorite(matchId)) {
+            AppPreferences.getInstance(requireContext()).removeFavorite(matchId)
+        } else {
+            AppPreferences.getInstance(requireContext()).addFavorite(matchId)
+        }
+        ligListAdapter.notifyDataSetChanged()
     }
 
 }

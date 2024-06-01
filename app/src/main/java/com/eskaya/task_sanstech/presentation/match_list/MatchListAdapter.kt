@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.eskaya.mvvm_application.R
 import com.eskaya.mvvm_application.databinding.ListItemMatchRowBinding
+import com.eskaya.task_sanstech.data.AppPreferences
 import com.eskaya.task_sanstech.data.remote.models.response.Data
 
 
@@ -36,19 +39,18 @@ class MatchListHistoryViewHolder(
 ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
     private lateinit var item: Data
+    private val context = binding.root.context
 
     init {
         binding.root.setOnClickListener(this)
         binding.ivStar.setOnClickListener {
-            listener.onStarClick(item)
+            listener.onStarClick(item.i)
         }
 
     }
 
     fun bind(item: Data) {
-        val context = binding.root.context
         this.item = item
-
         binding.tvScore.text = item.sc.abbr
         //ht --> ev sahibi, n --> adı
         binding.tvHomeTeam.text = item.ht.n
@@ -56,18 +58,31 @@ class MatchListHistoryViewHolder(
         //at --> deplasman, n --> adı
         binding.tvAwayTeam.text = item.at.n
         binding.tvScoreCount.text =
-            item.sc.ht.c.toString() + " " + "-" + " " + item.sc.at.c.toString()
-
-
+            item.sc.ht.r.toString() + " " + "-" + " " + item.sc.at.r.toString()
+        setFavoriteIcon()
     }
 
     override fun onClick(v: View?) {
         listener.onClickedItem(item.ht.n) //i --> ma.ın benzersiz kimliği
     }
 
+    private fun setFavoriteIcon() {
+        if (AppPreferences.getInstance(context).isFavorite(item.i)) {
+            Glide.with(context)
+                .load(R.drawable.ic_star)
+                .centerCrop()
+                .into(binding.ivStar)
+        } else {
+            Glide.with(context)
+                .load(R.drawable.ic_star_empty)
+                .centerCrop()
+                .into(binding.ivStar)
+        }
+    }
+
 }
 
 interface MatchAdapterListener {
     fun onClickedItem(homeName: String)
-    fun onStarClick(match: Data)
+    fun onStarClick(match: Int)
 }
