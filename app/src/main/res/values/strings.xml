@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">task-sanstech</string>
     <string name="detailPage_errorMsg">Detay sayfası yğklenirken bir sorun oluştu..</string>
+    <string name="detailPage_title">Maç Detayları</string>
+    <string name="back_btn">Geri Butonu</string>
+    <string name="detailPage_point">Puan: </string>
+    <string name="detailPage_score">Skor: </string>
+    <string name="detailPage_goalsCount">Maç Sonu Gol Sayısı: </string>
 
 </resources>

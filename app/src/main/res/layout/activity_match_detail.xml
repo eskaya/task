@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="@color/primary_color"
+    android:fillViewport="true"
     tools:context="com.eskaya.task_sanstech.presentation.match_detail.MatchDetailActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +20,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="50dp"
             android:fontFamily="@font/lato_extra_bold"
-            android:text="Match Detail"
+            android:text="@string/detailPage_title"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/text_20"
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/back_btn"
             android:src="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,12 +65,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Ev Sahibi Takım Adı"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_18"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Ev Sahibi Takım Adı" />
 
                 <TextView
                     android:id="@+id/tvHomeTeamPoint"
@@ -77,7 +78,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Point:"
+                    android:text="@string/detailPage_point"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintStart_toStartOf="parent"
@@ -89,12 +90,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="12"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintBottom_toBottomOf="@+id/tvHomeTeamPoint"
                     app:layout_constraintStart_toEndOf="@+id/tvHomeTeamPoint"
-                    app:layout_constraintTop_toTopOf="@+id/tvHomeTeamPoint" />
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeTeamPoint"
+                    tools:text="12" />
 
                 <TextView
                     android:id="@+id/tvHomeTeamScore"
@@ -102,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Score:"
+                    android:text="@string/detailPage_score"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintStart_toStartOf="parent"
@@ -114,12 +115,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="12"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintBottom_toBottomOf="@+id/tvHomeTeamScore"
                     app:layout_constraintStart_toEndOf="@+id/tvHomeTeamScore"
-                    app:layout_constraintTop_toTopOf="@+id/tvHomeTeamScore" />
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeTeamScore"
+                    tools:text="12" />
 
                 <TextView
                     android:id="@+id/tvHomeTeamGoal"
@@ -127,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Number of Goals:"
+                    android:text="@string/detailPage_goalsCount"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintStart_toStartOf="parent"
@@ -139,12 +140,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="3"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintBottom_toBottomOf="@+id/tvHomeTeamGoal"
                     app:layout_constraintStart_toEndOf="@+id/tvHomeTeamGoal"
-                    app:layout_constraintTop_toTopOf="@+id/tvHomeTeamGoal" />
+                    app:layout_constraintTop_toTopOf="@+id/tvHomeTeamGoal"
+                    tools:text="3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -174,12 +175,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Deplasman Takım Adı"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_18"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Deplasman Takım Adı" />
 
                 <TextView
                     android:id="@+id/tvAwayTeamPoint"
@@ -187,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Point:"
+                    android:text="@string/detailPage_point"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintStart_toStartOf="parent"
@@ -199,12 +200,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="12"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintBottom_toBottomOf="@+id/tvAwayTeamPoint"
                     app:layout_constraintStart_toEndOf="@+id/tvAwayTeamPoint"
-                    app:layout_constraintTop_toTopOf="@+id/tvAwayTeamPoint" />
+                    app:layout_constraintTop_toTopOf="@+id/tvAwayTeamPoint"
+                    tools:text="12" />
 
                 <TextView
                     android:id="@+id/tvAwayTeamScore"
@@ -212,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Score:"
+                    android:text="@string/detailPage_score"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintStart_toStartOf="parent"
@@ -224,12 +225,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="12"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintBottom_toBottomOf="@+id/tvAwayTeamScore"
                     app:layout_constraintStart_toEndOf="@+id/tvAwayTeamScore"
-                    app:layout_constraintTop_toTopOf="@+id/tvAwayTeamScore" />
+                    app:layout_constraintTop_toTopOf="@+id/tvAwayTeamScore"
+                    tools:text="12" />
 
                 <TextView
                     android:id="@+id/tvAwayTeamGoal"
@@ -237,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:fontFamily="@font/lato_bold"
-                    android:text="Number of Goals:"
+                    android:text="@string/detailPage_goalsCount"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintStart_toStartOf="parent"
@@ -249,12 +250,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/lato_regular"
-                    android:text="3"
                     android:textColor="@color/primary_color"
                     android:textSize="@dimen/text_16"
                     app:layout_constraintBottom_toBottomOf="@+id/tvAwayTeamGoal"
                     app:layout_constraintStart_toEndOf="@+id/tvAwayTeamGoal"
-                    app:layout_constraintTop_toTopOf="@+id/tvAwayTeamGoal" />
+                    app:layout_constraintTop_toTopOf="@+id/tvAwayTeamGoal"
+                    tools:text="3" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
