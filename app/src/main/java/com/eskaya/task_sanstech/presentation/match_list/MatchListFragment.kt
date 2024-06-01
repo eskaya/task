@@ -15,7 +15,7 @@ import com.eskaya.task_sanstech.data.remote.models.response.Data
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MatchListFragment : Fragment() {
+class MatchListFragment : Fragment(), MatchAdapterListener {
 
     private lateinit var binding: FragmentMatchListBinding
     private val viewModel: MatchViewModel by viewModels()
@@ -63,28 +63,8 @@ class MatchListFragment : Fragment() {
     }
 
     private fun handleSuccess(data: List<League>?) {
-
-        /*
-        for ((ligBilgisi, macListesi) in data) {
-            val (ligAdi, bayrak) = ligBilgisi
-            println("Lig Adı: $ligAdi")
-            println("Bayrak: $bayrak")
-            println("Maçlar:")
-            for (mac in macListesi) {
-                println("- ${mac.ht.n} vs ${mac.at.n}")
-            }
-            println("----------")
-        }
-
-         */
-
-        ligListAdapter = LigListAdapter(
-            data as ArrayList<League>,
-            object : LigAdapterListener {
-                override fun onClickedItem(ligName: String) {
-                    println("tıklama$ligName")
-                }
-            })
+        ligListAdapter = data?.let { LigListAdapter(it, this) }!!
+        binding.recyclerViewForLigList.adapter = ligListAdapter
         binding.recyclerViewForLigList.adapter = ligListAdapter
     }
 
@@ -93,6 +73,14 @@ class MatchListFragment : Fragment() {
 
     private fun handleError(error: Any) {
         Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onClickedItem(homeName: String) {
+        Toast.makeText(context,homeName,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStarClick(match: Data) {
+        Toast.makeText(context,"Yıldıza tıklandı",Toast.LENGTH_SHORT).show()
     }
 
 }

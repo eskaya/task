@@ -39,6 +39,10 @@ class MatchListHistoryViewHolder(
 
     init {
         binding.root.setOnClickListener(this)
+        binding.ivStar.setOnClickListener {
+            listener.onStarClick(item)
+        }
+
     }
 
     fun bind(item: Data) {
@@ -60,8 +64,10 @@ class MatchListHistoryViewHolder(
     override fun onClick(v: View?) {
         listener.onClickedItem(item.ht.n) //i --> ma.ın benzersiz kimliği
     }
+
 }
 
 interface MatchAdapterListener {
     fun onClickedItem(homeName: String)
+    fun onStarClick(match: Data)
 }
