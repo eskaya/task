@@ -23,7 +23,9 @@
         android:theme="@style/Theme.Taskapplicationesrakaya"
         android:windowSoftInputMode="stateHidden"
         tools:targetApi="31">
-
+        <activity
+            android:name="com.eskaya.task_sanstech.presentation.match_detail.MatchDetailActivity"
+            android:exported="false" />
         <activity
             android:name="com.eskaya.task_sanstech.presentation.MainActivity"
             android:exported="true">
@@ -37,7 +39,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
     </application>
 
 </manifest>

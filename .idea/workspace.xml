@@ -31,27 +31,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7516eff6-c60e-40c6-9062-a8b0ef6d1c18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/domain/model/Match.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/domain/model/MatchMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/data/remote/models/League.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/data/remote/models/League.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/data/repository/MatchRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/data/repository/MatchRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/di/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/di/AppModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/domain/repository/MatchRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/domain/repository/MatchRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/domain/use_case/GetMatchListUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/domain/use_case/GetMatchListUseCase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/presentation/match_list/MatchListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/presentation/match_list/MatchListAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/presentation/match_list/MatchListFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/presentation/match_list/MatchListFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/presentation/match_list/MatchViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/eskaya/task_sanstech/presentation/match_list/MatchViewModel.kt" afterDir="false" />
-    </list>
+    <list default="true" id="7516eff6-c60e-40c6-9062-a8b0ef6d1c18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
